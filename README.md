@@ -2,7 +2,7 @@
 An arcade type snake game in the browser using JavaScript and p5.jp library
 
 ## How to play
-1. Download all files onto the desktop.
+1. Download all files.
 2. Open index.html in your browser of choice.
 3. Press [ENTER] to start.
 
