@@ -3,7 +3,7 @@ var snake;
 var food;
 var menu;
 var gridsize = window.innerWidth/50;
-var gameon = 1;
+var gameon = 0;
 
 function setup() {
 	createCanvas(windowWidth, Math.floor(windowHeight/(gridsize))*(gridsize));
@@ -15,7 +15,6 @@ function setup() {
 }
 
 function draw() {
-	console.log('moved %i', frameRate());
 	// Clears the canvas before drawing next frame. It wouldn't be needed if the background wasn't transparent.
 	clear();
 	// Setting the background to transparent, so I can place it above a webpage using index-z in CSS.
@@ -24,7 +23,7 @@ function draw() {
 	if (snake.death() == true) {
 		frameRate(1);
 		gamemenu();
-	} else {
+	} else if (gameon == 1) {
 		snake.update();
 	}
 	// Defines how the snake is drawn.
@@ -42,6 +41,9 @@ function draw() {
 	// Clear the game when ESC is pressed after the snake dies.
 	if (gameon == 0) {
 		clear();
+		if (keyCode == ENTER) {
+			gameon = 1;
+		}
 	}
 }
 
