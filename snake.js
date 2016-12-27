@@ -2,8 +2,9 @@
 var snake;
 var food;
 var menu;
-var gridsize = window.innerWidth/50;
+var gridsize = window.innerWidth/27;
 var gameon = 1;
+var nextMove = 0;
 
 function setup() {
 	createCanvas(windowWidth, Math.floor(windowHeight/(gridsize))*(gridsize));
@@ -19,6 +20,8 @@ function draw() {
 	clear();
 	// Setting the background to transparent, so I can place it above a webpage using index-z in CSS.
 	background(255, 0);
+	// Enters the saved key from user into the snake direction
+	executeMove();
 	// When the snake dies show menu, but if it's alive continue game.
 	if (snake.death() == true) {
 		frameRate(1);
@@ -121,9 +124,15 @@ function snake() {
 	}
 }
 
-// Setting a function for changing the direction of the snake after keypresses.
+// Setting a function stores two moves
 function keyPressed() {
-	switch(keyCode) {
+	if (nextMove != keyCode && (keyCode == UP_ARROW || keyCode == LEFT_ARROW || keyCode == DOWN_ARROW || keyCode == RIGHT_ARROW)) {
+		nextMove = keyCode;
+	}
+}
+
+function executeMove() {
+	switch(nextMove) {
 		case UP_ARROW:
 			snake.direction(0, -1);
 			break;
@@ -137,6 +146,7 @@ function keyPressed() {
 			snake.direction(1, 0);
 			break;
 	}
+
 
 }
 
