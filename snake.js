@@ -146,8 +146,6 @@ function executeMove() {
 			snake.direction(1, 0);
 			break;
 	}
-
-
 }
 
 // Picking a random food location after the snake eats one.
