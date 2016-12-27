@@ -3,7 +3,7 @@ var snake;
 var food;
 var menu;
 var gridsize = window.innerWidth/50;
-var gameon = 0;
+var gameon = 1;
 
 function setup() {
 	createCanvas(windowWidth, Math.floor(windowHeight/(gridsize))*(gridsize));
@@ -23,7 +23,7 @@ function draw() {
 	if (snake.death() == true) {
 		frameRate(1);
 		gamemenu();
-	} else if (gameon == 1) {
+	} else {
 		snake.update();
 	}
 	// Defines how the snake is drawn.
@@ -39,11 +39,8 @@ function draw() {
 	// Draw the food.
 	rect(food.x, food.y, gridsize, gridsize);
 	// Clear the game when ESC is pressed after the snake dies.
-	if (gameon == 0) {
+	if (gameon == 0) {P
 		clear();
-		if (keyCode == ENTER) {
-			gameon = 1;
-		}
 	}
 }
 
